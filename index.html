@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criptografia com Funções Afim</title>
+
+  <!-- KaTeX: CSS e Scripts para renderizar LaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ]
+        });"></script>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f7fafc;
+      color: #2d3748;
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px;
+      margin: 0;
+    }
+
+    .container {
+      background: #ffffff;
+      max-width: 760px;
+      width: 100%;
+      border-radius: 12px;
+      padding: 36px 32px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      margin-top: 0;
+      margin-bottom: 8px;
+      text-align: center;
+      color: #1a202c;
+    }
+
+    .subtitulo {
+      text-align: center;
+      color: #4a5568;
+      font-size: 1.05rem;
+      margin-top: 0;
+      margin-bottom: 24px;
+    }
+
+    .intro {
+      background-color: #edf2f7;
+      border-left: 4px solid #3182ce;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+
+    .intro p {
+      margin: 0 0 10px 0;
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 640px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tool-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #ffffff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+      border-color: #cbd5e0;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .badge-azul {
+      background-color: #ebf8ff;
+      color: #2b6cb0;
+    }
+
+    .badge-verde {
+      background-color: #e6fffa;
+      color: #285e61;
+    }
+
+    .tool-card h2 {
+      font-size: 1.2rem;
+      margin: 0 0 12px 0;
+      color: #1a202c;
+    }
+
+    .tool-card p {
+      font-size: 0.94rem;
+      color: #4a5568;
+      line-height: 1.55;
+      margin: 0 0 12px 0;
+    }
+
+    .tool-card ul {
+      margin: 0 0 20px 0;
+      padding-left: 18px;
+      color: #4a5568;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .tool-card li {
+      margin-bottom: 6px;
+    }
+
+    .btn-link {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    .btn-link:active {
+      transform: scale(0.98);
+    }
+
+    .btn-azul {
+      background-color: #2b6cb0;
+      color: #ffffff;
+    }
+
+    .btn-azul:hover {
+      background-color: #2c5282;
+    }
+
+    .btn-verde {
+      background-color: #319795;
+      color: #ffffff;
+    }
+
+    .btn-verde:hover {
+      background-color: #285e61;
+    }
+
+    .rodape-creditos {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #718096;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Criptografia a partir de Funções Afim</h1>
+    <p class="subtitulo">Aplicações interativas de codificação e decodificação com aritmética modular</p>
+
+    <div class="intro">
+      <p>
+        A <strong>Cifra Afim</strong> é um método clássico de criptografia por substituição monoalfabética que associa cada letra do alfabeto ($A=0, B=1, \dots, Z=25$) a um número inteiro e aplica uma função afim em módulo 26:
+      </p>
+      <p style="text-align: center;">
+        $$C(x) = (ax + b) \pmod{26} \quad \text{e} \quad D(y) = a^{-1}(y - b) \pmod{26}$$
+      </p>
+      <p>
+        Escolha abaixo uma das duas ferramentas disponíveis para explorar o funcionamento matemático da cifra:
+      </p>
+    </div>
+
+    <div class="cards-grid">
+      <!-- Card 1: cripto.html -->
+      <div class="tool-card">
+        <div>
+          <span class="badge badge-azul">Modo Exploratório (Chave Manual)</span>
+          <h2>1. Cifra Afim com Parâmetros $a$ e $b$</h2>
+          <p>
+            Ferramenta voltada para a experimentação explícita dos coeficientes da função afim e do inverso multiplicativo.
+          </p>
+          <ul>
+            <li>Você define manualmente os valores inteiros de $a$ (coprimo com 26) e $b$.</li>
+            <li>Calcula e exibe em tempo real o inverso multiplicativo $a^{-1} \pmod{26}$.</li>
+            <li>Ideal para estudar a invertibilidade da função e testar chaves específicas em aula.</li>
+          </ul>
+        </div>
+        <a href="cripto.html" class="btn-link btn-azul">Acessar Cifra Afim Manual (cripto.html)</a>
+      </div>
+
+      <!-- Card 2: cripto2.html -->
+      <div class="tool-card">
+        <div>
+          <span class="badge badge-verde">Modo Automático (Chave Embutida)</span>
+          <h2>2. Codificador com Chave Oculta</h2>
+          <p>
+            Ferramenta para troca rápida de mensagens cifradas sem necessidade de combinar previamente os valores de $a$ e $b$.
+          </p>
+          <ul>
+            <li>Sorteia aleatoriamente os parâmetros $a$ e $b$ a cada codificação.</li>
+            <li>Embute a chave de forma disfarçada nos 2 primeiros e nos 2 últimos caracteres do criptograma.</li>
+            <li>Decodifica automaticamente a mensagem extraindo os parâmetros dessas extremidades.</li>
+          </ul>
+        </div>
+        <a href="cripto2.html" class="btn-link btn-verde">Acessar Codificador Automático (cripto2.html)</a>
+      </div>
+    </div>
+
+    <footer class="rodape-creditos">
+      Projeto elaborado por Alex Jordane em colaboração com Inteligência Artificial (Gemini).
+    </footer>
+  </div>
+
+</body>
+
+</html>
