@@ -41,7 +41,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 24px;
+      gap: 28px;
       margin-bottom: 20px;
       flex-wrap: wrap;
     }
@@ -49,6 +49,10 @@
     .header-logos img {
       max-height: 64px;
       width: auto;
+    }
+
+    .header-logos img.logo-destaque {
+      max-height: 96px;
     }
 
     .instituicao {
@@ -59,6 +63,36 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 8px;
+    }
+
+    .instituicao p {
+      margin: 2px 0;
+    }
+
+    .cursos {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #4a5568;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .cursos p {
+      margin: 2px 0;
+    }
+
+    .professor {
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #4a5568;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .professor p {
+      margin: 2px 0;
     }
 
     h1 {
@@ -290,13 +324,21 @@
 
   <div class="container">
     <div class="header-logos">
-      <img src="https://alexjordane.github.io/Limat.jpeg" alt="Limat">
+      <img src="https://alexjordane.github.io/Limat.jpeg" alt="Limat" class="logo-destaque">
       <img src="https://alexjordane.github.io/ifes.png" alt="Instituto Federal do Espírito Santo">
-      <img src="https://alexjordane.github.io/Educimat.png" alt="Educimat">
+      <img src="https://alexjordane.github.io/Educimat.png" alt="Educimat" class="logo-destaque">
     </div>
 
     <div class="instituicao">
-      Instituto Federal do Espírito Santo &bull; Pós-Graduação / Licenciatura em Matemática
+      <p>Instituto Federal do Espírito Santo</p>
+    </div>
+
+    <div class="cursos">
+      <p>Licenciatura em Matemática &bull; Educimat</p>
+    </div>
+
+    <div class="professor">
+      <p>Professor Alex Jordane</p>
     </div>
 
     <h1>Criptografia a partir de Funções Afim</h1>
@@ -386,10 +428,12 @@
     <footer class="footer">
       <p>
         <strong>Autoria:</strong> Professor Alex Jordane, em colaboração com Inteligência Artificial (Gemini).<br>
-        O compartilhamento e a reprodução deste material são permitidos para fins didáticos, desde que citadas a fonte e
-        a autoria.
+        Esta obra está licenciada sob uma Licença <strong>Creative Commons Atribuição-NãoComercial-SemDerivações 4.0
+          Internacional (CC BY-NC-ND 4.0)</strong>.
       </p>
-      <img src="CC.png" alt="Licença Creative Commons">
+      <p> O compartilhamento e a reprodução deste material são permitidos para fins didáticos, desde que citadas a fonte
+        e a autoria.</p>
+      <img src="https://alexjordane.github.io/CC.png" alt="Licença Creative Commons CC BY-NC-ND 4.0">
     </footer>
   </div>
 
