@@ -277,6 +277,7 @@
       .container {
         padding: 24px 18px;
       }
+
       .actions-bar .btn {
         width: 100%;
         justify-content: center;
@@ -289,8 +290,8 @@
 
   <div class="container">
     <div class="header-logos">
-      <img src="ifes.png" alt="Instituto Federal do Espírito Santo">
-      <img src="Educimat.png" alt="Educimat">
+      <img src="../alexjordane.github.io/ifes.png" alt="Instituto Federal do Espírito Santo">
+      <img src="../alexjordane.github.io/Educimat.png" alt="Educimat">
     </div>
 
     <div class="instituicao">
@@ -317,10 +318,13 @@
 
     <div class="intro-box">
       <p>
-        Este projeto reúne ferramentas interativas para o estudo de <strong>Criptografia Clássica (Cifra Afim)</strong>, <strong>Funções Afim</strong> e <strong>Aritmética Modular</strong>.
+        Este projeto reúne ferramentas interativas para o estudo de <strong>Criptografia Clássica (Cifra Afim)</strong>,
+        <strong>Funções Afim</strong> e <strong>Aritmética Modular</strong>.
       </p>
       <p>
-        Na Cifra Afim, cada letra do alfabeto ($A=0, B=1, \dots, Z=25$) é associada a um número inteiro e transformada por uma função afim em módulo 26, cuja decodificação depende da existência do inverso multiplicativo $a^{-1} \pmod{26}$.
+        Na Cifra Afim, cada letra do alfabeto ($A=0, B=1, \dots, Z=25$) é associada a um número inteiro e transformada
+        por uma função afim em módulo 26, cuja decodificação depende da existência do inverso multiplicativo $a^{-1}
+        \pmod{26}$.
       </p>
       <div class="formula-destaque">
         $$C(x) = (ax + b) \pmod{26} \qquad \text{e} \qquad D(y) = a^{-1}(y - b) \pmod{26}$$
@@ -336,12 +340,14 @@
           <span class="badge badge-azul">Modo Exploratório (Chave Manual)</span>
           <h3>1. Cifra Afim com Parâmetros $a$ e $b$</h3>
           <p>
-            Ferramenta voltada para a experimentação pedagógica explícita dos coeficientes da função afim e do inverso multiplicativo.
+            Ferramenta voltada para a experimentação pedagógica explícita dos coeficientes da função afim e do inverso
+            multiplicativo.
           </p>
           <ul>
             <li>Escolha manualmente os valores inteiros de $a$ (coprimo com 26) e $b$.</li>
             <li>Visualize em tempo real o cálculo automático do inverso multiplicativo $a^{-1} \pmod{26}$.</li>
-            <li>Ideal para estudar a condição de invertibilidade ($\text{mdc}(a, 26) = 1$) e testar chaves específicas em aula.</li>
+            <li>Ideal para estudar a condição de invertibilidade ($\text{mdc}(a, 26) = 1$) e testar chaves específicas
+              em aula.</li>
           </ul>
         </div>
         <a href="cripto.html" class="btn btn-primary" style="justify-content: center;">Acessar Cifra Afim Manual</a>
@@ -353,7 +359,8 @@
           <span class="badge badge-verde">Modo Automático (Chave Embutida)</span>
           <h3>2. Codificador com Chave Oculta</h3>
           <p>
-            Ferramenta pensada para dinâmicas de troca rápida de mensagens cifradas sem necessidade de combinar previamente os valores de $a$ e $b$.
+            Ferramenta pensada para dinâmicas de troca rápida de mensagens cifradas sem necessidade de combinar
+            previamente os valores de $a$ e $b$.
           </p>
           <ul>
             <li>Sorteia aleatoriamente os parâmetros $a$ e $b$ a cada nova codificação.</li>
@@ -370,14 +377,16 @@
     <div class="chapter-card">
       <h3>Script em Linha de Comando (<code>cripto.py</code>)</h3>
       <p>
-        Implementação em Python puro das funções <code>inverso_multiplicativo</code>, <code>codificar</code> e <code>decodificar</code>, ideal para análise algorítmica e atividades integradas de matemática e programação.
+        Implementação em Python puro das funções <code>inverso_multiplicativo</code>, <code>codificar</code> e
+        <code>decodificar</code>, ideal para análise algorítmica e atividades integradas de matemática e programação.
       </p>
     </div>
 
     <footer class="footer">
       <p>
         <strong>Autoria:</strong> Professor Alex Jordane, em colaboração com Inteligência Artificial (Gemini).<br>
-        O compartilhamento e a reprodução deste material são permitidos para fins didáticos, desde que citadas a fonte e a autoria.
+        O compartilhamento e a reprodução deste material são permitidos para fins didáticos, desde que citadas a fonte e
+        a autoria.
       </p>
       <img src="CC.png" alt="Licença Creative Commons">
     </footer>
